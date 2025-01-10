@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(233, 230, 225);
+            align-content: center;
+            align-items: center;
+        }
+        .full{
+            align-items: center;
+            align-content: center;
+        }
+        .strength{
+            margin-top: 10px;
+            width:70%;
+            height: 30px;
+            background-color: grey;
+        }
+        .bar{
+            width:0;
+            height: 100%;
+            background-color: brown;
+            transition: width 0.3s ;
+        }
+        .butt{
+            height: 45px;
+            font-size: 15px;
+        }
+        .ff{
+            font-size: 35px;
+        }
+        .tex{
+            height:35px;
+            width: 40%;
+        }
+        .msg{
+            font-size:35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+    <form name="myform" method="post" onsubmit="checkpass(event)" class="ff">
+        Enter the Password<br>
+        <input type="text" placeholder="Password" name="word" class="tex"><br>
+        <input type="submit" value="CHECK" class="butt">
+    </form><br><br>
+    <div class="strength">
+        <div class="bar" id="sbar"></div>
+    </div>
+    <div class="msg" id="message"></div>
+</div>
+</body>
+<script>
+    function checkpass(event) {
+        event.preventDefault();
+        var pas=document.myform.word.value;
+        var flag=0;
+        var bar=document.getElementById('sbar');
+        var msg=document.getElementById('message');
+        var fc=pas.charAt(0);
+        if(pas.length>=8)
+        flag++;
+        if(/[A-Z]/.test(fc))
+        flag++;
+        if(/[0-9]/.test(pas))
+        flag++;
+        if(/[^A-Za-z0-9]/.test(pas))
+        flag++;
+        if(/[a-z]/.test(pas))
+        flag++;
+        switch(flag)
+        {
+            case 0:
+                msg.innerHTML="";
+                bar.style.backgroundColor = "grey";
+                break;
+            case 1: 
+                msg.innerHTML="Very Weak password";
+                bar.style.backgroundColor = "red";
+                bar.style.width= "20%";
+                break;
+            case 2: 
+                msg.innerHTML="Weak password";
+                bar.style.backgroundColor= "orange";
+                bar.style.width= "30%";
+                break;
+            case 3: 
+                msg.innerHTML="Medium strength password";
+                bar.style.backgroundColor= "yellow";
+                bar.style.width= "60%";
+                break;
+            case 4: 
+                msg.innerHTML="Strong password";
+                bar.style.backgroundColor= "green";
+                bar.style.width= "80%";
+                break;
+            case 5: 
+                msg.innerHTML="Very strong password";
+                bar.style.backgroundColor= "darkgreen";
+                bar.style.width= "100%";
+                break;
+        }
+        
+    }
+</script>
+
+</html>

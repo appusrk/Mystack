@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fact(){
+            var num,f=1;
+            num=parseInt(document.getElementById("number").value);
+            for(i=2;i<=num;i++)
+            f=f*i;
+        document.getElementById("fac").value=f;
+        }
+    </script>
+</head>
+<body>
+    <p>Enter number : <input type="number" id="number"></p>
+    <button onclick="fact()">Find</button>
+    <p>Factorial = <input id="fac"></p>
+</body>
+</html>
