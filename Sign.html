@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validatepass(event){
+            event.preventDefault();
+            var nam=document.myform.name.value;
+            var p=document.myform.pass.value;
+            if(nam==null||nam==""){
+            alert("Name can't be blank");
+            return false;}
+            if(p.length<6){
+            alert("Password must be 6 characters long");
+            return false;}
+            var str=document.myform.check.value; 
+            var revstr=str.split('').reverse().join('');
+            document.getElementById("reversed").innerText=revstr;
+            return false;
+        
+    }
+    </script>
+</head>
+<body>
+    <form name="myform" method="post" onsubmit="validatepass(event)">
+        <label>User name</label>
+        <input type="text" name="name" placeholder="Enter name" id="name"><BR>
+        <label>Password</label>
+        <input type="password" name="pass" id="pass" ><br>
+        <label>Sentence</label>
+        <input type="text" name="check" id="check"><br>
+        <input type="submit" value="submit">
+    </form>
+    <p id="reversed"></p>
+   
+</body>
+</html>
